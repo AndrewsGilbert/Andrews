@@ -1,0 +1,32 @@
+<html>
+
+<title>Sorting</title>
+
+<h2>Smallest Number</h2>
+
+<p> The Given Numbers <span id="demo1"></span></p>
+
+<p>The Smallest Number is <span  id="demo2"></span></p>
+
+<script>
+
+var Number = [55,25,56,75,23,9,52,2,1,32];
+
+document.getElementById("demo1").innerHTML = Number;
+
+document.getElementById("demo2").innerHTML = Number.reduce(smallnum);
+
+function smallnum( total, num) {
+
+var a = total - num;
+
+if ( a > 0 ) { total = num;}
+
+return total;
+
+}
+
+
+</script>
+
+</html>

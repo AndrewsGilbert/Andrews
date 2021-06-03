@@ -1,0 +1,88 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Shortest Path Finding</h2>
+
+
+<p><span id="demo1"></span></p>
+
+<p>The Shortest Path is = <span id="demo2"></span></p>
+
+
+
+<script>
+
+var places = { A:{ B:2,C:5 }, // adjacent places with distanes are stored
+
+				B:{ A:2,C:2,E:7,D:1 },	
+				
+				C:{ A:5,B:2,D:3 },
+				
+				D:{ C:3,E:2,F:5,B:1 },
+				
+				E:{ B:7,D:2,F:1 },
+				
+				F:{ D:5,E:1 }
+};
+
+
+var val = { A:0,B:500,C:500,D:500,E:500,F:500 }; // value at all places are stored
+
+var pre = { B:"",C:"",D:"",E:"",F:"" }; //parent place are stored 
+
+var path = [];
+
+var x = "A"; //starting place
+
+var y = "F"; //ending place
+
+path[0] = y;
+
+paths();
+
+
+function paths() { 
+
+for ( d in places ) {
+
+for ( s in places ) { 
+
+for ( m in places[s] )  { 
+
+n = val[s] + (places[s])[m];
+
+if ( val[m] >= n  ) {  val[m] = n; pre[m] = s; }}} }
+
+
+for ( k = 0; k < Object.keys(pre).length; k++) {
+
+a = pre[path[k]]; 
+
+path.push(a); 
+
+if ( a == x ) { path.reverse(); break; }} 
+
+
+}; 
+
+ 
+
+document.getElementById("demo1").innerHTML = "The distance between "+x+" and "+y+" is "+val[y];
+document.getElementById("demo2").innerHTML = path;
+
+console.log('cost at y', val[y] );
+
+console.log('path to path', pre);
+
+console.log(path); 
+
+console.time();
+console.timeEnd();
+
+</script>
+
+</html>
+
+
+

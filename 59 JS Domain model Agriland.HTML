@@ -1,0 +1,122 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Agri Land Model</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+var plots = { a1:{Plot_id:"a1",len:500,wid:300,location:"Tenkasi"},b1:{Plot_id:"b1",len:700,wid:500,location:"Ambai"},
+	
+			  a2:{Plot_id:"a2",len:1000,wid:600,location:"Kadayam"}
+			};
+			
+		
+var owners = { o1:{name:"Raja",gender:"Male",dob:"10.05.1972",contact_no:"229114"},
+			  o2:{name:"Mani",gender:"Male",dob:"12.10.1985",contact_no:"202512"}
+			};
+		
+		
+var soils = { s1:{name:"Red soil",colour:"Red",type:"Silt",water_holding:"Low",nutrients:"Low",ph:6},
+	
+			  s2:{name:"Black soil",colour:"Black",type:"Cley",water_holding:"High",nutrients:"High",ph:7.5},
+				 
+			  s2:{name:"Alluvial soil",colour:"Grey",type:"Silt",water_holding:"Medium",nutrients:"High",ph:7}
+			};
+			
+
+var plants = { p0:"noplant", p1:"Tomotto", p2:"Rice",p3:"chilly" };
+			
+			
+var lands = { la1:{owner:owners.o1,plot:plots.a1,plant:plants.p0,soil:soils.s2},la2:{owner:owners.o2,plot:plots.a2,plant:plants.p2,soil:soils.s1},
+				
+			  la3:{owner:owners.o1,plot:plots.b1,plant:plants.p2,soil:soils.s3},	
+
+			};			
+			
+var tplant = [];
+
+var towner = [];	
+
+findplants(); //to find no of lands having perticular plant
+
+function findplants() { 
+
+			for ( a in lands) { 
+	
+			if ( lands[a].plant == plants.p2 ) { tplant.push(a) }
+	
+			} 	
+			console.log(tplant.length); //no of lands with this plant
+			console.log(tplant); //land id of with this plant is stored
+			};
+			
+plantofdetail(); // to get the details of lands,which is having particlar plant			
+
+function plantofdetail() {
+
+for (i = 0; i < tplant.length; i++) {
+
+  a = lands[tplant[i]];
+  
+  console.log(a.plot); //land is with this plant
+  console.log(a.owner); //owner detail who is having this plant
+ }
+ };
+ 
+ 
+findowner(); //to find no of lands with this owner
+ 
+function findowner() { 
+
+			for ( a in lands) { 
+	
+			if ( lands[a].owner == owners.o1 ) { towner.push(a) }
+	
+			} 	
+			console.log(towner.length); //no of lands with this owner
+			console.log(towner); //lands with this owner
+			};
+
+
+ownerofdetail(); // to get the detail of the owner		
+
+function ownerofdetail() {
+
+for (i = 0; i < towner.length; i++) {
+
+  a = lands[towner[i]];
+  
+  console.log(a.plot); //land is with this plant
+  console.log(a.plant); //owner detail who is having this plant
+ }
+ };
+ 
+ 
+findplot(); //to find details of plot with survey number
+
+function findplot() { 
+
+			for ( a in lands) { 
+	
+			if ( lands[a].plot.Plot_id == "a1" ) { 
+
+			console.log(plots.a1); //Plots details
+			console.log(lands[a].owner); //owner details
+			console.log(lands[a].plant); //plant detsil
+
+			}	
+			} 	
+			};
+
+</script>
+
+</html>
+
+
+

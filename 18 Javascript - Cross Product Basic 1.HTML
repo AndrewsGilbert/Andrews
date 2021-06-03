@@ -1,0 +1,44 @@
+<html>
+<body>
+<title>Cross Products</title>
+
+<h3>Cross Products</h3>
+
+<p>Cross Product is  =  <span  id="demo1"></span></p>
+<p>Cross Product is  =  <span  id="demo2"></span></p>
+<p>Cross Product is  =  <span  id="demo3"></span></p>
+
+<script>
+
+var a = [ 1,2,3 ];
+var b = [ 3,2,1 ];
+
+var x = [ 1,2 ];
+var y = [ 3,2 ];
+
+var p = [ 1 ];
+var q = [ 3 ];
+
+function crossproduct(a,b) {
+
+var c =[];
+
+if ( a.length === 1 | b.length === 1 ) { return c = 0; }
+if ( a.length === 2 | b.length === 2 ) { a[2] = 0; b[2] = 0; }
+
+c[0] = a[1]*b[2] - a[2]*b[1]
+
+c[1] = -(a[0]*b[2] - a[2]*b[0])
+
+c[2] = a[0]*b[1] - a[1]*b[0]
+ 
+return c;
+ }
+document.getElementById("demo1").innerHTML = crossproduct(a,b);
+document.getElementById("demo2").innerHTML = crossproduct(x,y);
+document.getElementById("demo3").innerHTML = crossproduct(p,q);
+</script>
+
+</body>
+
+</html>

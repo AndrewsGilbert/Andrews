@@ -1,0 +1,40 @@
+<html>
+
+<title>Fibonaci Series</title>
+
+<h2>Fibonaci Series</h2>
+
+<p>Fibonaci Series <span  id="demo1"></span></p>
+
+<script>
+
+var Number = [0,1];
+var n = 12;
+
+document.getElementById("demo1").innerHTML = Number.reduceRight(fibnum);
+
+function fibnum( total,num,index,arr) {
+
+
+for ( i = 2; i <= n; i++) {
+
+var a = total+num;
+
+arr.push(a);
+total = a;
+num = arr[arr.length-2];
+  
+}
+  
+return arr;
+
+}
+
+
+
+
+
+
+</script>
+
+</html>

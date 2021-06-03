@@ -1,0 +1,63 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Facebook Friends Model</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+
+		
+var users = { u1:{id:1,name:"Raja",gender:"Male",dob:"10.05.1972",contact_no:"229114"},
+			  u2:{id:2,name:"Mani",gender:"Male",dob:"12.10.1985",contact_no:"202512"},
+			  u3:{id:3,name:"Ramya",gender:"Female",dob:"24.02.1992",contact_no:"302512"},
+			  u4:{id:4,name:"Ravi",gender:"Male",dob:"22.09.1985",contact_no:"452578"},
+			};
+		
+		
+			
+var facebook = { fb1:{user:users.u1,friends:[4,2]},fb2:{user:users.u2,friends:[1,3]},
+					fb3:{user:users.u3,friends:[4,1]},fb4:{user:users.u4,friends:[3,2]}
+			};			
+						
+
+			
+addfrined();
+
+function addfrined(){
+
+main_id = 1; // This is the id number, where new frined id need to be add.
+
+add_id = 3; // This is the id number, which is need to add in another one id.
+
+if ( main_id !== add_id ) {
+
+for ( a in facebook ) { 
+
+if ( facebook[a].user.id == main_id ) { 
+
+if ( !facebook[a].friends.includes(add_id) ) { 
+
+facebook[a].friends.push(add_id);
+
+} 
+} 
+}
+} 
+};			
+			
+			console.log(facebook.fb1.friends); //after adding new friend in a user
+
+
+
+</script>
+
+</html>
+
+
+

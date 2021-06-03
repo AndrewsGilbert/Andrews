@@ -1,0 +1,109 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+<p>The Given string in Array Format <span  id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+
+
+<script>
+
+
+	
+	var numbe1 = [3,'/',5,'*',1,'/',8,'/',1,'*',14,'+',4,'-',3]
+	
+				document.getElementById("demo1").innerHTML = numbe1;
+			
+				dive(numbe1);
+	
+function dive(numbe1,i=1) { 
+	
+
+	var di = numbe1.includes("/",i);
+	
+
+		if (di) { 
+		
+		a = numbe1.indexOf("/",i);   b = (numbe1.indexOf("/",i))-1;   c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "/";   dive(numbe1,i);}
+			
+			else  { i=i+1; dive(numbe1,i); }
+
+				}				
+				if(!di) {  multi(numbe1); } 
+			
+				}
+
+function multi(numbe1,i=1) {
+
+		var mu = numbe1.includes("*",i);
+		
+	 if (mu) { 
+		
+		a = numbe1.indexOf("*",i);   b = (numbe1.indexOf("*",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "*";  multi(numbe1,i);}
+			
+			else { c = numbe1[b]; if ( c === "/"  ) {   numbe1[a] = c; numbe1[b] = "*";   multi(numbe1,i);} 
+			
+			else  { i=i+1;   multi(numbe1,i); }
+
+				} }
+				
+			if(!mu) {  add(numbe1); } 
+
+			
+			} 
+
+
+function add(numbe1,i=1) {
+
+		var ad = numbe1.includes("+",i); 
+	
+	 if (ad) { 
+		
+		a = numbe1.indexOf("+",i);    b = (numbe1.indexOf("+",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "+";  add(numbe1,i);} 
+			
+			else { c = numbe1[b];  if ( c === "/" || c === "*"  ) {   numbe1[a] = c;  numbe1[b] = "+";  add(numbe1,i);} 
+			
+			else  {  i=i+1; add(numbe1,i); } }
+
+				}
+	if(!ad) { sub(numbe1); }
+
+				
+	
+	
+			} 
+		
+function sub(numbe1,i=1) {
+	
+		var su = numbe1.includes("-",i); 
+	
+	 if (su) { 
+		
+		a = numbe1.indexOf("-",i);    b = (numbe1.indexOf("-",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "-";  sub(numbe1,i);} 
+			
+			else { c = numbe1[b];  if ( c === "/" || c === "*" || c === "+"  ) {   numbe1[a] = c;  numbe1[b] = "-";  sub(numbe1,i);} 
+			
+			else  {  i=i+1; sub(numbe1,i); } }
+
+				}
+				
+				if(!su) { document.getElementById("demo2").innerHTML =  numbe1;  }
+				
+			} 		
+			
+
+</script>
+
+</html>

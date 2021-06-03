@@ -1,0 +1,56 @@
+<html>
+<body>
+<title>Brackets</title>
+
+<h2>Balnced Brackets checking</h2>
+
+<p> The Given Brackets <span id="demo1"></span></p>
+
+<p>The Brackets are <span  id="demo2"></span></p>
+
+<script>
+
+var Brackets = ["{","(",")","(",")"] ;
+
+document.getElementById("demo1").innerHTML = Brackets;
+
+document.getElementById("demo2").innerHTML = brack(Brackets);
+
+function brack(br) {
+
+var lb = br.length;
+
+var stack = [];
+
+var assume = { '(':')','[':']','{':'}' };
+
+for ( i=0; i<=lb; i++) {
+
+if ( br[i] === '(' | br[i] === '{' ) {
+
+stack.push(br[i]); 
+
+ }
+
+else {
+
+var a = stack.pop(); 
+	
+ if ( br[i] !== assume[a] ) {return false;} 
+
+ }
+ console.log(stack.length);
+}
+
+ return stack.length ===0;
+ 
+
+}
+
+
+
+</script>
+
+</body>
+
+</html>

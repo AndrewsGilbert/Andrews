@@ -1,0 +1,42 @@
+<html>
+
+<title>Sorting</title>
+
+<h2>Ascending  Order</h2>
+
+<p> The Given Numbers <span id="demo1"></span></p>
+
+<p>The Ascending Order is <span  id="demo2"></span></p>
+
+<script>
+
+var Number = [58,69,79,12,5,22,89];
+
+document.getElementById("demo1").innerHTML = Number;
+
+document.getElementById("demo2").innerHTML = sort(Number);
+
+function sort(sm) {
+
+var len = sm.length;
+
+ for (i = len-1; i >= 0; i--){
+       
+       for( j =1; j <= i; j++){
+           
+           var Min = sm[j-1];
+           
+           if(sm[j] < Min)
+           {
+		sm[j-1] = sm[j];
+		sm[j] = Min;              
+ 
+               }
+               }
+               }
+               return sm;
+               }
+
+</script>
+
+</html>

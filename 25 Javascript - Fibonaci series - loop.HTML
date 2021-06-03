@@ -1,0 +1,36 @@
+<html>
+<body>
+<title>Fibonacci Series</title>
+
+<h3>Fibonacci Series</h3>
+
+<p>Fibonacci Number is  =  <span  id="demo"></span></p>
+
+<script>
+
+var n = 10;
+
+function fibser(x) {
+
+var f = [0,1];
+
+
+for ( i = 2; i <= x; i++ ) {
+
+f[i] = f[i-1]+f[i-2];
+
+}
+
+f.push(f[i]);
+
+return f;
+}
+
+
+document.getElementById("demo").innerHTML = fibser(n);
+
+</script>
+
+</body>
+
+</html>

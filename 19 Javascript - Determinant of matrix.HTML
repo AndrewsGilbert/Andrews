@@ -1,0 +1,48 @@
+<html>
+<body>
+<title>Det of Matirx</title>
+
+<h3>Det of Matirx</h3>
+
+<p>Det of Matirx is  =  <span  id="demo"></span></p>
+
+<script>
+
+var a = [ [ 1,2,3 ] , [ 3,2,1 ], [ 2,3,2 ] ];
+
+function detmat(a) {
+
+var arow = a.length;
+var aclm = a[0].length;
+var b = [];
+var db;
+
+if ( arow !== aclm) {return false;}
+
+ for ( i = 0; i < aclm; i++ ) { 
+ 
+let j;
+let k;
+
+if ( i === 0 ) { j = 1; k = 2; }
+if ( i === 1 ) { j = 2; k = 0; }
+if ( i === 2 ) { j = 0; k = 1; }
+   
+b[i] = a[0][i]*( (a[1][j] * a[2][k]) - (a[1][k] * a[2][j]) );
+
+	db = b.reduce(sum);
+
+ function sum (total,num) { return total + num;}
+ }
+
+
+return db;
+}
+
+document.getElementById("demo").innerHTML = detmat(a);
+
+</script>
+
+</body>
+
+</html>

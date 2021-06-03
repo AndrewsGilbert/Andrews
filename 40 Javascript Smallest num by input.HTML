@@ -1,0 +1,81 @@
+<html>
+
+<title>Sorting</title>
+
+<h2>Smallest Number</h2>
+
+<label for = "num" > Enter the Number </label>
+
+<input type = "text" id = "num" >
+
+<button onclick = "getnumber()" >Submitt</button>
+
+<p> The Given Numbers <span id="demo1"></span></p>
+
+<p>The Smallest Number is <span  id="demo2"></span></p>
+
+<script>
+
+function getnumber() {
+
+var Numbe = document.getElementById("num").value; //getting value from user input
+ 
+document.getElementById("demo1").innerHTML = conexp(Numbe, i=0 );
+
+conexp(Numbe);
+}
+
+function conexp(Numbe) { //user value will be in string, so indentify the number and get the number in array
+
+var a = Array.from(Numbe); 
+
+num1 = [];
+
+num2 = [];
+
+for ( i=0; i < a.length; i++ ) { 
+
+var b = Number(a[i]);
+
+var c = Number.isNaN(b);
+
+
+if (!c || a[i] === '.') {  num1.push(a[i]);	 } 
+
+
+else  {  d = num1.join(""); e = Number(d); num2.push(e);  num1.splice(0,d.length);   }
+
+
+if ( i === a.length -1 ) { d = num1.join("");  e = Number(d); num2.push(e); }
+
+}
+
+document.getElementById("demo2").innerHTML = smallnum(num2);
+
+return num2;
+
+}
+
+
+function smallnum(sm) {
+
+var len = sm.length;
+
+var min = sm[0];
+
+for ( i=1; i<len; i++) {
+
+if ( sm[i] < min ) {
+
+min = sm[i];
+
+}
+
+}
+
+return min;
+}
+
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<html>
+<body>
+<title>Dot Products</title>
+
+<h3>Dot Products (1r*2c) & (2r*1c)</h3>
+
+<p> Dot Product is (1r*1c) =  <span  id="demo"></span></p>
+
+<script>
+
+var a = [ 2,3 ];
+
+var b = [ 5,4 ];
+
+function dotproduct(r1,c1) {
+
+var db = 0;
+var lr1 = r1.length;	
+var lc1 = c1.length;
+
+for (i=0; i<lr1 | i<lc1; i++) {
+
+ db += (r1[i]*c1[i]);
+ 
+ }
+return db;
+ }
+  
+document.getElementById("demo").innerHTML = dotproduct(a,b);
+
+</script>
+
+</body>
+
+</html>

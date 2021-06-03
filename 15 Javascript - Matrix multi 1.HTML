@@ -1,0 +1,52 @@
+<html>
+<body>
+<title>Dot Product</title>
+
+<h3>Dot Product (2r*2c) & (2r*1c)</h3>
+
+
+<p> Dot Product is (2r*1c) =  <span  id="demo"></span></p>
+
+<script>
+
+var r1 = [ 1,2 ];
+var r2 = [ 3,4 ];
+var c1 = [ 5,6 ];
+
+//t = transpose of matrix
+
+var nt = [];
+
+var r1c1 = 0;
+var r2c1 = 0;
+
+var lr1 = r1.length;
+var lc1 = c1.length;
+
+document.getElementById("demo").innerHTML = dotproduct();
+
+function dotproduct() {
+
+for (i=0; i<lr1 | i<lc1; i++) {
+
+ r1c1 += (r1[i]*c1[i]);
+ 
+ r2c1 += (r2[i]*c1[i]);
+ 
+ }
+ 
+  nt.push(r1c1);
+  nt.push(r2c1);
+  
+  console.log(nt);
+return  nt;
+
+ }
+  
+
+
+</script>
+
+</body>
+
+</html>

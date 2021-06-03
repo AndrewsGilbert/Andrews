@@ -1,0 +1,160 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+<label for = "str" > Enter the String </label>
+
+<input type = "text" id = "str" >
+
+<button onclick = "getstring()" >Submitt</button>
+
+<p> The Given string <span id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+<script>
+
+function getstring() {
+
+var expr = document.getElementById("str").value; 
+ 
+document.getElementById("demo1").innerHTML = expr;
+
+conexp(expr);
+
+}
+
+function conexp(expr) {
+
+
+var a = Array.from(expr); 
+
+num1 = [];
+ope = [];
+num2 = [];
+
+for ( i=0; i < a.length; i++ ) { 
+
+var b = Number(a[i]);
+
+var c = Number.isNaN(b);
+
+
+if (!c || a[i] === '.' )  { if ( ope.length > 0 ) { num2.push(ope.pop()); ope.splice(0,ope.length);  num1.push(a[i]); } 
+
+								else {	num1.push(a[i]);}	}
+
+
+else  { if ( num1.length > 0 ) {  d = num1.join(""); num2.push(Number(d));    num1.splice(0,d.length);  ope.push(a[i]); } 
+
+else { ope.push(a[i]); } } 
+
+
+if ( i === a.length -1 ) { d = num1.join(""); num2.push(Number(d)); } 
+
+}  
+
+numbe1 = num2;
+
+dive(numbe1);
+
+
+}  
+	
+function dive(numbe1) { 
+	
+for ( j=1;  j< numbe1.length; j++) {
+
+	for ( i=1;  i< numbe1.length; i++) {
+	
+	var di = numbe1.includes("/",i);
+	
+
+		if (di) { 
+		
+		a = numbe1.indexOf("/",i);   b = (numbe1.indexOf("/",i))-1;   c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "/"; }
+			
+				} } }
+				
+			 multi(numbe1);
+			
+				}
+
+function multi(numbe1) {
+
+for ( j=1;  j< numbe1.length; j++) {
+
+	for ( i=1;  i< numbe1.length; i++) {
+
+		var mu = numbe1.includes("*",i);
+		
+	 if (mu) { 
+		
+		a = numbe1.indexOf("*",i);   b = (numbe1.indexOf("*",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "*"; }
+			
+			else { c = numbe1[b]; if ( c === "/"  ) {   numbe1[a] = c; numbe1[b] = "*"; } }
+			
+			} } }
+		
+		sub(numbe1);
+			
+			}
+			
+	
+function sub(numbe1) {
+
+for ( j=1;  j< numbe1.length; j++) {
+
+	for ( i=1;  i< numbe1.length; i++) {
+	
+		var su = numbe1.includes("-",i);
+		
+	 if (su) { 
+		
+		a = numbe1.indexOf("-",i);   b = (numbe1.indexOf("-",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "-"; }
+			
+			else { c = numbe1[b];  if ( c === "/" || c === "*" ) {   numbe1[a] = c; numbe1[b] = "-"; } }
+			
+			} } }
+			
+			add(numbe1);
+
+			} 			
+			
+					
+function add(numbe1) {
+
+for ( j=1;  j< numbe1.length; j++) {
+
+	for ( i=1;  i< numbe1.length; i++) {
+
+		var ad = numbe1.includes("+",i);
+		
+	 if (ad) { 
+		
+		a = numbe1.indexOf("+",i);   b = (numbe1.indexOf("+",i))-1; c = Number(numbe1[b]);  d = Number.isNaN(c); 
+ 
+			if (!d) {  numbe1[a] = c; numbe1[b] = "+";}
+			
+			else { c = numbe1[b]; if ( c === "/" || c === "*" || c === "-"  ) {   numbe1[a] = c; numbe1[b] = "+"; } }
+			
+			} } }
+			
+			console.log(numbe1); document.getElementById("demo2").innerHTML = numbe1;
+			
+			}
+			
+			
+			
+			
+</script>
+
+</html>

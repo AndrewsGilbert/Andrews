@@ -1,0 +1,51 @@
+<html>
+<body>
+
+<h2> Find a number is a Array</h2>
+
+<p> The Given Array <span id="demo1"></span></p>
+<p> The Index <span id="demo2"></span></p>
+
+
+<script>
+var points = [1,2,3,4,5,6,7,8];
+
+document.getElementById("demo1").innerHTML = points; 
+
+document.getElementById("demo2").innerHTML = find(points);
+
+
+function find(fm) {
+var x = 6;
+var len = fm.length;
+var a;
+var b =  Math.ceil(len/2);
+
+if ( fm[b] >= x ){
+
+
+for ( i = 0; i <= b; i++) {
+
+if ( fm[i] == x ) {
+
+a = i;
+
+}
+}
+}
+else { for ( i = b+1; i <= len; i++ ) {
+if ( fm[i] == x ) {
+
+a = i;
+}
+}
+}
+return a;
+
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Land Model</h2>
+
+<label for = "str1" > land name </label>
+
+<input type = "text" id = "str1" ><br>
+<br>
+<label for = "num1" > length </label>
+
+<input type = "number" id = "num1" ><br>
+<br>
+<label for = "num2" > width </label>
+
+<input type = "number" id = "num2" ><br>
+<br>
+<label for = "str2" > Owner name </label>
+
+<input type = "text" id = "str2" ><br>
+<br>
+<label for = "str3" > Owner gender </label>
+
+<input type = "text" id = "str3" ><br>
+<br>
+<label for = "str4" > Owner Dob </label>
+
+<input type = "text" id = "str4" ><br>
+<br>
+<label for = "str5" > soil name </label>
+
+<input type = "text" id = "str5" ><br>
+
+<br>
+<label for = "str6" > soil color </label>
+
+<input type = "text" id = "str6" ><br>
+<br>
+<label for = "str7" > soil type </label>
+
+<input type = "text" id = "str7" ><br>
+<br>
+<label for = "str8" > water holding </label>
+
+<input type = "text" id = "str8" ><br>
+<br>
+<label for = "str9" > nutrients </label>
+
+<input type = "text" id = "str9" ><br>
+<br>
+<label for = "num3" > Ph </label>
+
+<input type = "number" id = "num3" ><br>
+<br>
+<button onclick = "get()" >Submitt</button>
+
+
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+//model - 1
+
+class lands{ constructor(landname,len,wid,owner_name,owner_gender,owner_dob,soil_name,soil_colour,soil_type,soil_waterholding,soil_nutrients,soil_ph)
+				{
+				this.name = landname;
+				this.length = len;
+				this.width = wid;
+				this.owner = owner_name;
+				this.owner_gender = owner_gender;
+				this.owner_dob = owner_dob;
+				this.soil_name = soil_name;
+				this.soil_colour = soil_colour;
+				this.soil_type = soil_type;
+				this.soil_waterholding = soil_waterholding;
+				this.soil_nutrients = soil_nutrients;
+				this.soil_ph = soil_ph;
+				} };
+var txt;
+var a = [];
+
+
+
+var land0 = new lands("1a",500,400,"Raja","male","10.12.1985","Black soil","black","cley","high","high",7.5);
+
+var land1 = new lands("112c",800,1000,"Kalai","male","13.05.1992","Alluvial soil","grey","silt","medium","high",7);
+
+var land2 = new lands("274t",1500,2000,"Ram","male","24.03.1987","Red soil","red","silt","low","low",6);
+
+	a[0] = land0;
+	a[1] = land1;
+	a[2] = land2;
+
+var i = a.length;
+
+var n  = 2;
+
+var b = i+n;
+
+function get() { 
+
+
+nam = document.getElementById("str1").value; 
+lent = document.getElementById("num1").value; 
+widt = document.getElementById("num2").value; 
+owner = document.getElementById("str2").value; 
+ownerg = document.getElementById("str3").value; 
+ownerdob = document.getElementById("str4").value; 
+soilnam = document.getElementById("str5").value; 
+soilcol = document.getElementById("str6").value; 
+soiltyp = document.getElementById("str7").value; 
+soilwaterholding = document.getElementById("str8").value; 
+soilnutrients = document.getElementById("str9").value; 
+soilph= document.getElementById("num3").value; 
+
+ add(a,nam,lent,widt,owner,ownerg,ownerdob,soilnam,soilcol,soiltyp,soilwaterholding,soilnutrients,soilph); 
+ 
+ };
+ 
+ 
+function add(a,nam,lent,widt,owner,ownerg,ownerdob,soilnam,soilcol,soiltyp,soilwaterholding,soilnutrients,soilph) { 
+
+
+
+a[i] = new lands();
+
+a[i].name = nam;
+a[i].length = lent;
+a[i].width = widt;
+a[i].owner = owner;
+a[i].owner_gender = ownerg;
+a[i].owner_dob = ownerdob;
+a[i].soil_name =  soilnam;
+a[i].soil_colour = soilcol;
+a[i].soil_type =  soiltyp;
+a[i].soil_waterholding = soilwaterholding;
+a[i].soil_nutrients = soilnutrients;
+a[i].soil_ph =  soilph; 
+
+
+
+if ( i == 5 ) {return a;} 
+
+
+document.getElementById("demo1").innerHTML = a;
+console.log(a[i]);
+i++;
+
+
+};
+
+ 
+
+
+//model - 2
+/*
+class land_info{ constructor(land,user,soil)
+				{
+				
+				this.land_details = land;
+				this.user_details = user;
+				this.soil_details = soil;
+				
+				} };
+				
+				
+var lands = [ {Plot_No:"1a",len:500,wid:300},{Plot_No:"2b",len:700,wid:500},
+	
+			  {Plot_No:"3c",len:1000,wid:600}
+			];
+
+var users = [ {name:"Raja",gender:"male",dob:"10.05.1972"},
+			  {name:"Mani",gender:"male",dob:"12.10.1985"},
+			  {name:"Kalai",gender:"male",dob:"23.04.1992"}
+			];			
+			
+		
+var soils = [ {name:"red soil",colour:"red",type:"silt",water_holding:"low",nutrients:"low",ph:6},
+	
+			  {name:"Black soil",colour:"black",type:"cley",water_holding:"high",nutrients:"high",ph:7.5},
+				 
+			  {name:"Alluvial soil",colour:"grey",type:"silt",water_holding:"medium",nutrients:"high",ph:7}
+			];
+
+
+
+
+
+var land1 = new land_info(lands[2],users[0],soils[1]);
+
+var land2 = new land_info(lands[0],users[1],soils[2]);
+
+var land3 = new land_info(lands[1],users[2],soils[0]);*/
+
+
+
+
+//model-3
+
+/*var lands = [ {Plot_No:"1a",len:500,wid:300},{Plot_No:"1b",len:700,wid:500},
+	
+			  {Plot_No:"2a",len:1000,wid:600},{Plot_No:"2b",len:800,wid:900},
+				
+		      {Plot_No:"3a",len:1000,wid:1000},{Plot_No:"3b",len:1200,wid:1500},{Plot_No:"3b",len:1300,wid:1100}
+			];
+			
+			
+var users = [ {name:"Raja",gender:"male",dob:"10.05.1972"},
+			  {name:"Mani",gender:"male",dob:"12.10.1985"},
+			  {name:"Kalai",gender:"male",dob:"23.04.1992"}
+			];			
+			
+		
+var soils = [ {name:"red soil",colour:"red",type:"silt",water_holding:"low",nutrients:"low",ph:6},
+	
+			  {name:"Black soil",colour:"black",type:"cley",water_holding:"high",nutrients:"high",ph:7.5},
+				 
+			  {name:"Alluvial soil",colour:"grey",type:"silt",water_holding:"medium",nutrients:"high",ph:7}
+			];
+	
+
+var models = [{land:lands[0],user:users[0],soil:soils[2]},{land:lands[1],user:users[0],soil:soils[1]},
+
+			   {land:lands[2],user:users[2],soil:soils[0]},{land:lands[3],user:users[2],soil:soils[1]},
+			   
+				{land:lands[4],user:users[1],soil:soils[0]},{land:lands[5],user:users[1],soil:soils[2]},{land:lands[6],user:users[0],soil:soils[1]}
+			]; */
+
+
+
+
+/*
+var agri = { source:["soil","water","seed"],
+
+			planting:["humen","machines"],
+
+			soil:["blak_soil","red_soil","alluvial_soil"],
+			
+			water:["lake water","river water","openwell_water"],
+
+			natural_resoure:["soil","water","seed","fertilizer","pesticides"],
+			
+			developed_resoure:["electricity","fertilizer","pesticides","fuel"],
+			
+			openwell_water:["pump","electricity","fuel"],
+			
+			pump:["motor","engine"], motor:["electricity","submersible_pump","ourdoor_pump"],
+			
+			fuel:"diesel", engine:"fuel",seed:"plants",
+			
+			plants:["short_time","long_time"], permanant_plants:["long_time","multiple_harvest"],
+			
+			temperory_plants:["short_time","one_time_harvest","many_time_harvest"],
+			
+			one_time_harvest:["temperory_plants","rice","cotton","ground_nut","dal","corn"],
+
+			many_time_harvest:["temperory_plants","sunflower","tomotto","chilly","lady's finger","brinjal"],
+
+			multiple_harvest:["permanant_plants","cocunt","mango","jackfruit","drumstick","lemon","guava"],
+			
+			processor:["fertilizer","pesticides"],
+			
+			harvest:["humen","machines","vechile",], product:["value_add","processing","packing","measurement","quantity","quality"],
+			
+			selling:["product","packing","price","customer","soceity"]
+
+			};
+			
+			"type":{"sand","clay","silt"},"water_holding":{"low","medium","high"},"nutrients":{"nitrogen","pottassium","calcium"}}},
+
+			"plant":{"fruits","flower","seed","wood","leaves","root","height","type":{"shorttime_harvest","longtime_harvest","climbers","small_plant","tree"}},
+			
+			water:[["ph:7"],"nutrients:["nitrogen,pottassium,calcium"]" ] };
+			
+			"pump":{"electrical":{"submesible","outdoor"},"diesel_engine"}
+
+			"nutrients":{"nitrogen","pottassium","calcium"}*/
+
+</script>
+
+</html>
+
+
+

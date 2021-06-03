@@ -1,0 +1,33 @@
+<html>
+<body>
+<title>Fibonacci Series</title>
+
+<h3>Fibonacci Series</h3>
+
+<p>Fibonacci Number is  =  <span  id="demo"></span></p>
+
+<script>
+
+var n = 17;
+
+
+function fibser(x) {
+
+var a = 1.618034;
+
+var b = Math.pow(a,x);
+var c = Math.pow((1-a),x);
+
+var fib = Math.round( (b-c)/Math.sqrt(5) );
+
+return fib;
+
+}
+
+document.getElementById("demo").innerHTML = fibser(n);
+
+</script>
+
+</body>
+
+</html>

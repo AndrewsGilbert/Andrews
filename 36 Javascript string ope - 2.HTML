@@ -1,0 +1,53 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+<p> The Given string <span id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+
+
+<script>
+
+var expr = "1+2+3+5"
+
+document.getElementById("demo1").innerHTML = expr;
+
+
+function conexp(expr) {
+
+var ope = [];
+var num = [];
+
+var a = Array.from(expr);
+
+for ( i=0; i<a.length; i++) {
+
+var b = Number(a[i]);
+
+var c = Number.isNaN(b);
+
+if (c) { ope.push(a[i]); }
+
+else { num.push(a[i]); }
+
+console.log(c);
+
+}
+ openum = ope.concat(num); 
+ 
+
+ return openum;
+
+}
+
+document.getElementById("demo2").innerHTML = conexp(expr);
+
+
+
+</script>
+
+</html>

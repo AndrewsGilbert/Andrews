@@ -1,0 +1,157 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+<label for = "str" > Enter the String </label>
+
+<input type = "text" id = "str" >
+
+<button onclick = "getstring()" >Submitt</button>
+
+<p> The Given string <span id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+<script>
+
+function getstring() {
+
+var expr = document.getElementById("str").value; 
+ 
+document.getElementById("demo1").innerHTML = expr;
+
+conexp(expr);
+
+}
+
+function conexp(expr) {
+
+
+var a = Array.from(expr);
+
+num1 = [];
+num2 = [];
+
+for ( i=0; i < a.length; i++ ) { 
+
+var b = Number(a[i]);
+
+var c = Number.isNaN(b);
+
+
+if (!c || a[i] === '.' ) {  num1.push(a[i]);}
+
+
+else  {  d = num1.join(""); num2.push(Number(d));  num1.splice(0,d.length);  num2.push(a[i]); }
+
+
+if ( i === a.length -1 ) { d = num1.join(""); num2.push(Number(d)); }
+
+
+}
+
+dive(num2);
+
+}  
+	
+function dive(num2) { 
+
+	var ab = num2.includes("/"); if (ab) {
+	
+	
+for ( j=1;  j< num2.length; j++) {
+
+	for ( i =1; i< num2.length;) {
+	
+	var di = num2.includes("/",i); 
+	
+		if (di) { 
+		
+		 x = num2.indexOf("/",i); y = x-1; z = x+1; p = z-2;  a = Number(num2[y]); b = Number(num2[z]); c = Number.isNaN(a); d = Number.isNaN(a); 
+ 
+			if (!c && !d) { e = a/b; num2.splice(y,3,e); console.log(num2); }
+			 
+			else {  return false; } 
+		
+				} else { multi(num2);} 
+				
+				}  }  }  multi(num2);  } 
+				
+				
+
+function multi(num2) {  console.log(num2);
+
+var ab = num2.includes("*"); if (ab) {
+
+for ( j=1;  j< num2.length; j++) {
+
+	for ( i =1; j< num2.length; ) {
+
+		var mu = num2.includes("*",i);
+		
+	 if (mu) { 
+		
+		 x = num2.indexOf("*",i); y = x-1; z = x+1; p = z-2;  a = Number(num2[y]); b = Number(num2[z]); c = Number.isNaN(a); d = Number.isNaN(a); 
+ 
+			if (!c && !d) { e = a*b; num2.splice(y,3,e); console.log(num2);  }
+			
+			else { return false; } 
+		
+				} else { sub(num2);} 
+				
+				} } }   sub(num2); } 
+				
+			
+
+function sub(num2) { 
+
+var ab = num2.includes("-"); if (ab) {
+
+
+for ( j=1;  j< num2.length; j++) {
+
+	for ( i =1; j< num2.length; ) {
+
+		var su = num2.includes("-",i);
+		
+	 if (su) { 
+		
+		 x = num2.indexOf("-",i); y = x-1; z = x+1; p = z-2;  a = Number(num2[y]); b = Number(num2[z]); c = Number.isNaN(a); d = Number.isNaN(a); 
+ 
+			if (!c && !d) { e = a-b; num2.splice(y,3,e);   }
+			
+			else { return false; } 
+		
+				} else { add(num2); } 
+				
+				} } }    add(num2); } 
+					
+function add(num2) { 
+
+var ab = num2.includes("+"); if (ab) {
+
+for ( j=1;  j< num2.length; j++) {
+
+	for ( i =1; j< num2.length; ) {
+
+		var ad = num2.includes("+",i);
+		
+	 if (ad) { 
+		
+		 x = num2.indexOf("+",i); y = x-1; z = x+1; p = z-2;  a = Number(num2[y]); b = Number(num2[z]); c = Number.isNaN(a); d = Number.isNaN(a); 
+ 
+			if (!c && !d) { e = a+b; num2.splice(y,3,e); }
+			
+			else { return false; } 
+		
+				} else { return false;} 
+				
+				} } } console.log(num2); document.getElementById("demo2").innerHTML = num2; } 
+				
+			
+			
+</script>
+
+</html>

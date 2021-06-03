@@ -1,0 +1,31 @@
+<html>
+<body>
+<title>String Reverse</title>
+
+<h3>String reverse</h3>
+
+<p>Reversed String  =  <span  id="demo"></span></p>
+
+<script>
+
+var a = "Dhamu"
+
+function strrev(a) {
+
+var b = Array.from(a);
+
+var c = b.reverse(); 
+
+var d = c.join(""); 
+
+return d;
+
+}
+
+document.getElementById("demo").innerHTML = strrev(a);
+
+</script>
+
+</body>
+
+</html>

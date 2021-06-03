@@ -1,0 +1,67 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+<label for = "str" > Enter the String </label>
+
+<input type = "text" id = "str" >
+
+<button onclick = "getstring()" >Submitt</button>
+
+<p> The Given string <span id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+<script>
+
+function getstring() {
+
+var expr = document.getElementById("str").value; 
+ 
+document.getElementById("demo1").innerHTML = expr;
+
+document.getElementById("demo2").innerHTML = conexp(expr,i=0,num1 = []);
+
+}
+
+function conexp(expr,i=0,num1 = [] , num2 = [],ope = []) {
+
+
+var a = Array.from(expr);
+
+if ( i < a.length ) {
+
+var b = Number(a[i]);
+
+var c = Number.isNaN(b);
+
+
+if (!c) {  num1.push(a[i]);	i++;  conexp(expr,i,num1,num2,ope); } 
+
+
+else  {  d = num1.join(""); num2.push(d);  num1.splice(0,d.length);  ope.unshift(a[i]);  i++; conexp(expr,i,num1,num2,ope); }
+
+
+if ( i === a.length -1 ) { d = num1.join(""); num2.push(d); }
+
+
+}
+
+
+openum = ope.concat(num2); 
+ 
+
+return openum;
+
+}
+
+
+
+
+
+
+</script>
+
+</html>

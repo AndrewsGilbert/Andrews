@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+<title>Sorting</title>
+
+</head>
+
+<body>
+
+<h2>Smallest Number</h2>
+
+<p> The Given Numbers <span id="demo1"></span></p>
+
+<p>The Smallest Number is <span  id="demo2"></span></p>
+
+<script>
+
+var Number = [25,56,78,92,291,3,84,93,5,292,25,15];
+
+
+document.getElementById("demo1").innerHTML = Number;
+
+document.getElementById("demo2").innerHTML = smallnum(Number);
+
+function smallnum(sm) {
+
+var len = sm.length;
+
+var min = sm[0];
+var i=0;
+while (i<len) {
+
+if ( sm[i] < min ) {
+           
+ min = sm[i];
+
+}
+i++;
+}
+return min; 
+}
+
+</script>
+
+</body>
+
+</html>

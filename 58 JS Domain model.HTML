@@ -1,0 +1,134 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Land Model</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+var plots = [ {Plot_No:"1a",len:500,wid:300,location:"Tenkasi"},{Plot_No:"1b",len:700,wid:500,location:"Ambai"},
+	
+			  {Plot_No:"2a",len:1000,wid:600,location:"Kadayam"}
+			];
+			
+		
+var users = [ {name:"Raja",gender:"Male",dob:"10.05.1972",contact_no:"229114"},
+			  {name:"Mani",gender:"Male",dob:"12.10.1985",contact_no:"202512"}
+			];
+		
+		
+var soils = [ {name:"Red soil",colour:"Red",type:"Silt",water_holding:"Low",nutrients:"Low",ph:6},
+	
+			  {name:"Black soil",colour:"Black",type:"Cley",water_holding:"High",nutrients:"High",ph:7.5},
+				 
+			  {name:"Alluvial soil",colour:"Grey",type:"Silt",water_holding:"Medium",nutrients:"High",ph:7}
+			];
+			
+
+
+
+var lands = [{plot:plots[0],user:users[0],soil:soils[2]},{plot:plots[1],user:users[1],soil:soils[1]},
+
+			   {plot:plots[2],user:users[0],soil:soils[0]}
+			  ];
+			  
+var a = users.length;
+
+var ind_pl = [];
+var ind_la = [];
+
+var plotcount; 
+var landcount; 
+var x;
+
+
+remove(plots,lands,soils,users,ind_pl,ind_la,plotcount,landcount);
+
+
+
+function remove(){
+
+x = 2;
+i = x; //the index of plot or land to be removed
+
+
+
+if ( i < plots.length ) { // to remove the land at given index as "i"
+
+if (delete plots[i]) {delete lands[i]; ind_pl.push(i);ind_la.push(i);} } 
+
+}; 
+
+add(plots,lands,soils,users,ind_pl,ind_la,plotcount,landcount); 
+
+function add() { //function for adding new land
+
+if ( ind_pl.length > 0 ) { i = ind_pl[0]; ind_la.shift(); ind_pl.shift(); // add a new land at the existing index where the lands are removed and index kept as empty.
+
+
+lands[i] = {};
+users[a] = {};
+plots[i] = {};
+
+users[a].name = "Kali";
+users[a].gender = "male";
+users[a].dob = "10.05.1992";
+users[a].contact_no = "256741";
+
+plots[i].name = "56f";
+plots[i].len = 1000;
+plots[i].wid = 5000;
+plots[i].location = "Theni";
+
+lands[i].soil = soils[2];
+lands[i].user = users[a];
+lands[i].plot = plots[i]; }
+
+else { i = plots.length; // directly adding a land with new index ,if no removal of existing land.
+
+lands[i] = {};
+users[a] = {};
+plots[i] = {};
+
+users[a].name = "Kalai";
+users[a].gender = "male";
+users[a].dob = "10.05.1992";
+users[a].contact_no = "256741";
+
+plots[i].name = "43d";
+plots[i].len = 1000;
+plots[i].wid = 5000;
+plots[i].location = "Madurai";
+
+lands[i].soil = soils[1];
+lands[i].user = users[a];
+lands[i].plot = plots[i]; }
+
+
+
+};
+
+plotcount = plots.length - ind_pl.length;
+landcount = lands.length - ind_la.length;
+
+
+
+console.log(plotcount); 
+
+console.log(lands); 
+
+console.log(users.length); 
+
+
+
+</script>
+
+</html>
+
+
+

@@ -1,0 +1,57 @@
+<html>
+<body>
+<title>Dot Product</title>
+
+<h3>Dot Product (2*2) & (2*2)</h3>
+
+
+<p> Dot Product is <span  id="demo"></span></p>
+
+<script>
+
+var r1 = [ 1,2 ];
+var r2 = [ 3,4 ];
+var c1 = [ 5,7 ];
+var c2 = [ 6,8 ];
+
+var nr1 = [];
+var nr2 = [];
+
+var r1c1 = 0;
+var r1c2 = 0;
+var r2c1 = 0;
+var r2c2 = 0;
+
+var lr1 = r1.length;
+var lc1 = c1.length;
+
+document.getElementById("demo").innerHTML = dotproduct();
+
+function dotproduct() {
+
+for (i=0; i<lr1 | i<lc1; i++) {
+
+ r1c1 += (r1[i]*c1[i]);
+ r1c2 += (r1[i]*c2[i]);
+ r2c1 += (r2[i]*c1[i]);
+ r2c2 += (r2[i]*c2[i]);
+ 
+ }
+ nr1.push(r1c1);
+ nr1.push(r1c2);
+ 
+ nr2.push(r2c1);
+ nr2.push(r2c2);
+ 
+
+ console.log([nr1,nr2]);
+ 
+return [nr1,nr2];
+
+ }
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Shortest Route finding</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+var places = { 1:{ place:"A", val:0, adjplaces:[{adjplace:2,dist:14},{adjplace:4,dist:24}] },
+
+				2:{ place:"B", val:103, adjplaces:[{adjplace:1,dist:14},{adjplace:3,dist:15},{adjplace:4,dist:30}] },	
+				
+				3:{ place:"C", val:103, adjplaces:[{adjplace:2,dist:15},{adjplace:4,dist:20}]},
+				
+				4:{ place:"D", val:103, adjplaces:[{adjplace:1,dist:24},{adjplace:2,dist:30},{adjplace:3,dist:20}] },
+
+};
+
+
+var pre = { 1:1,2:"",3:"",4:"" };
+
+var path = [];
+
+var x = 1; //starting node
+
+var y = 4; //ending node
+
+path[0] = y;
+
+paths();
+
+function paths() { 
+
+for ( i = x; i <= Object.keys(places).length; i++ ) { 
+
+for ( j = 0; j < places[i].adjplaces.length; j++ ) { 
+
+n = places[i].val + places[i].adjplaces[j].dist; 
+
+m = places[i].adjplaces[j].adjplace;
+
+if ( places[m].val > n ) { places[m].val = n; pre[m] = i; }
+
+}
+} 
+
+
+for ( k = 0; k < Object.keys(pre).length; k++) {
+
+a = pre[path[k]];
+
+path.push(a); 
+
+if ( a == x ) { break; } 
+
+} 
+
+for ( f = 0; f < path.length; f++) {
+
+path[f] = places[path[f]].place; 
+
+} 
+};
+
+console.log('cost at y', places[y].val);
+
+console.log('path to path', pre);
+
+console.log(path); 
+
+</script>
+
+</html>
+
+
+

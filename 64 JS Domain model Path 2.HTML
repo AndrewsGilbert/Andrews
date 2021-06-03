@@ -1,0 +1,75 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Facebook Friends Model</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+var places = { A:{ place:"A", val:0, adjplaces:[{adjplace:"B",dist:14},{adjplace:"D",dist:24}] },
+
+				B:{ place:"B", val:103, adjplaces:[{adjplace:"A",dist:14},{adjplace:"C",dist:15},{adjplace:"D",dist:30}] },	
+				
+				C:{ place:"C", val:103, adjplaces:[{adjplace:"B",dist:15},{adjplace:"D",dist:20}]},
+				
+				D:{ place:"D", val:103, adjplaces:[{adjplace:"A",dist:24},{adjplace:"B",dist:30},{adjplace:"C",dist:20}] },
+
+};
+
+var pre = { A:"A",B:"",C:"",D:"" };
+
+var path = [];
+
+var x = "A"; //starting node
+
+var y = "C"; //ending node
+
+path[0] = y;
+
+paths();
+
+function paths() { 
+
+for ( s in places ) { 
+
+for ( j = 0; j < places[s].adjplaces.length; j++ ) { 
+
+n = places[s].val + places[s].adjplaces[j].dist; 
+
+m = places[s].adjplaces[j].adjplace; 
+
+if ( places[m].val > n ) { places[m].val = n; pre[m] = s; }
+
+}
+} 
+
+
+for ( k = 0; k < Object.keys(pre).length; k++) {
+
+a = pre[path[k]]; 
+
+path.push(a); 
+
+if ( a == x ) { break; } 
+
+} 
+
+};
+
+console.log('cost at y', places[y].val);
+
+console.log('path to path', pre);
+
+console.log(path); 
+
+</script>
+
+</html>
+
+
+

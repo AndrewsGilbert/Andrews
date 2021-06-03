@@ -1,0 +1,42 @@
+<html>
+
+<title>Sorting</title>
+
+<h2>Ascending Oredr</h2>
+
+<p> The Given Numbers <span id="demo1"></span></p>
+
+<p>The Ascending order is <span  id="demo2"></span></p>
+
+
+
+<script>
+
+var Number = [7,4,1,8,3,2,0,15,5];
+
+document.getElementById("demo1").innerHTML = Number;
+
+
+function smallnum( sm,i=1,j=0 ) {
+
+var a = sm[i-1];
+var b = sm[i];
+
+var c = a - b;
+
+if ( c > 0 ) { sm[i-1] = sm[i]; sm[i] = a; }
+
+if ( i < sm.length - 1 ) { i++; smallnum( sm,i,j ); }
+
+if ( i > sm.length - 2 && j < i ) {  j++; i = 1;  smallnum( sm,i,j );  } 
+
+return sm;
+}
+
+document.getElementById("demo2").innerHTML = smallnum(Number);
+
+
+
+</script>
+
+</html>

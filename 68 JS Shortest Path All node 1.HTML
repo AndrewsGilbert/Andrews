@@ -1,0 +1,168 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Shortest Path Finding</h2>
+
+
+<p><span id="demo1"></span></p>
+
+<p>The Shortest Path is = <span id="demo2"></span></p>
+
+
+
+<script>
+
+var places = { A:{ B:14,D:24 }, // adjacent places with distanes are stored
+
+				B:{ A:14,C:15,D:30 },	
+				
+				C:{ B:15,D:20 },
+				
+				D:{ A:24,B:30,C:20 },
+				
+
+};
+
+
+var val = { A:0,B:500,C:500,D:500 }; // value at all places are stored
+
+var pre = { B:"",C:"",D:"" }; //parent place are stored
+
+
+
+var tempplace = [];
+
+var tempval = [];
+
+var visited = [];
+
+var z = "A"; //starting node
+
+var y = "A"; //ending node
+
+var x = z;
+
+path = [];
+
+path[0] = y;
+
+
+
+paths2(); 
+ 
+function paths2() { 
+
+
+for ( m in places[x] ) { 
+
+if ( !visited.includes(m) ) { 
+
+val[m] = val[x] + (places[x])[m]; 
+
+pre[m] = x; 
+
+visited.push(x);
+
+tempplace.push(m); 
+
+tempval.push(val[m]); 
+
+minval = Math.min.apply(null,tempval);}} 
+
+
+
+for ( s in tempplace ) { 
+ 
+if ( tempval[s] == minval ) {  x = tempplace[s]; tempplace.splice(0,tempplace.length); tempval.splice(0,tempval.length);}  
+
+if ( !visited.includes(x) ) { paths2(); }
+
+if ( !visited.includes(x) && z == y ) { 
+
+a = Object.keys(places[x]);  
+
+if ( !a.includes(y) ) { path[0] = x; val[y] = val[x]+val[x]; }
+
+else { val[y] = val[x]+(places[x])[y]; pre[y] = x; }} }
+
+
+}; 
+
+for ( k = 0; k < Object.keys(pre).length; k++) {
+
+a = pre[path[k]]; 
+
+path.push(a); 
+
+if( k == Object.keys(pre).length-1 ) { 
+
+if ( val[y] == val[x]+val[x] ) { r = path.slice(1,path.length); path.reverse(); path = path.concat(r);}
+
+else { path.reverse(); break; }
+
+} 
+
+}
+
+
+ 
+
+document.getElementById("demo1").innerHTML = "The distance between "+z+" and "+y+" is "+val[y];
+document.getElementById("demo2").innerHTML = path;
+
+console.log('cost at y', val[y] );
+
+console.log('path to path', pre);
+
+
+
+console.log(path); 
+
+/* 
+
+var places = { A:{ B:2,C:4 }, // adjacent places with distanes are stored
+
+				B:{ A:2,C:1,E:7 },	
+				
+				C:{ A:4,B:1,D:3 },
+				
+				D:{ C:3,E:2,F:5 },
+				
+				E:{ B:7,D:2,F:1 },
+				
+				F:{ D:5,E:1 }
+};
+
+
+var val = { A:0,B:500,C:500,D:500,E:500,F:500 }; // value at all places are stored
+
+var pre = { B:"",C:"",D:"",E:"",F:"" }; //parent place are stored 
+
+****************************************************************************************
+
+var places = { A:{ B:14,D:24 }, // adjacent places with distanes are stored
+
+				B:{ A:14,C:15,D:30 },	
+				
+				C:{ B:15,D:20 },
+				
+				D:{ A:24,B:30,C:20 },
+				
+
+};
+
+
+var val = { A:0,B:500,C:500,D:500 }; // value at all places are stored
+
+var pre = { B:"",C:"",D:"" }; //parent place are stored
+
+*/
+
+
+</script>
+
+</html>
+
+
+

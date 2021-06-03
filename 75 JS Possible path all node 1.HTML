@@ -1,0 +1,105 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Shortest Path Finding</h2>
+
+
+<p><span id="demo1"></span></p>
+
+<p>The Shortest Path is = <span id="demo2"></span></p>
+
+
+
+<script>
+
+var places = { A:{name:"A",val:0,vertex:{ B:["AB",10],C:["AC",2] }} , B:{name:"B",val:111,vertex:{ A:["BA",10],C:["BC",5]} }, C:{name:"C",val:111,vertex:{ A:["CA",2],B:["CB",5]} }  };
+
+
+
+		
+
+var path = [];
+
+var value = [];
+
+var visitednode = [];
+var visitededge = [];
+
+var possiblepath = {};
+var pathvalue = {};
+
+
+var z = "A"; //starting place
+
+var p = "A"; //ending place
+
+var x = z;
+
+path[0] = z; 
+
+
+allpaths(); 
+
+function allpaths() { 
+
+
+
+for ( node in Object.keys(places[x].vertex) ){  if ( !visitednode.includes(x)) { visitednode.push(x);}
+
+		if ( (Object.keys(places[x].vertex))[node] !== z && visitednode.length < Object.keys(places).length){  
+		
+			if ( !visitededge.includes( places[x].vertex[(Object.keys(places[x].vertex))[node]][0] )) { places[(Object.keys(places[x].vertex))[node]].val = places[x].val + places[x].vertex[(Object.keys(places[x].vertex))[node]][1];
+				
+						visitededge.push(places[x].vertex[(Object.keys(places[x].vertex))[node]][0]); path.push((Object.keys(places[x].vertex))[node]); x = (Object.keys(places[x].vertex))[node];  allpaths();}} 
+						
+						
+		
+			else if ( (Object.keys(places[x].vertex))[node] == z && visitednode.length == Object.keys(places).length ) { places[(Object.keys(places[x].vertex))[node]].val = places[x].val + places[x].vertex[(Object.keys(places[x].vertex))[node]][1];
+			
+						visitededge.push(places[x].vertex[(Object.keys(places[x].vertex))[node]][0]); path.push((Object.keys(places[x].vertex))[node]); possiblepath[Object.keys(possiblepath).length] = path.slice(0,path.length); 
+							
+							pathvalue[Object.keys(pathvalue).length] = places[(Object.keys(places[x].vertex))[node]].val; 
+							} 
+							
+							} 
+							}; 
+							
+if ( Object.keys(possiblepath).length >= 1 && Object.keys(possiblepath).length < 2*(Object.keys(places).length)-1 ) { console.log(x); places[z].val = 0; path.splice(0,path.length-1); visitednode.splice(0,visitednode.length); x = z; allpaths(); }						
+
+
+
+
+console.log(path);
+
+
+
+console.log(possiblepath);
+
+
+console.log(pathvalue);
+
+
+/*
+document.getElementById("demo1").innerHTML = "The distance between "+z+" and "+p+" is "+val[p];
+document.getElementById("demo2").innerHTML = path;
+
+console.log('cost at y', val[z] );
+
+console.log('path to path', pre);
+
+console.log(path); 
+
+console.time();
+console.timeEnd(); */
+
+
+
+
+
+</script>
+
+</html>
+
+
+

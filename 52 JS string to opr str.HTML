@@ -1,0 +1,59 @@
+<html>
+
+<title>string conversation</title>
+
+<h2>string conversation</h2>
+
+
+<p> The Given string <span id="demo1"></span></p>
+
+<p>The converted string is <span  id="demo2"></span></p>
+
+<script>
+
+var a = ['+','+','-','*','*',5,2,'/',5,5,'*','*','*','/',6,8,4,58,2,'*',2,8,1];
+
+document.getElementById("demo1").innerHTML = a; 
+
+
+de(a);
+
+function de(a) { 
+
+
+for (i=0; i<a.length; i++) {
+
+if ( a[i] == '/' ) { a[i] = 'div'; }
+
+ if ( a[i] == '*' )  { a[i] = 'mul'; }
+
+ if ( a[i] == '-' ) { a[i] = 'sub'; }
+
+ if ( a[i] == '+' ) { a[i] = 'add'; }
+ 
+ }
+var ref =[];
+
+for ( i=a.length-1; i>=0; i--) {  if ( a[i] == 'div' || a[i] == 'mul' || a[i] == 'sub' || a[i] == 'add' ) {  a.splice( i+1,0,'('); a.splice( i+4,0,')');
+
+
+
+ref.push(a.splice(i,5)); 
+
+ref.join();
+
+a.splice(i,0,ref.pop());
+
+
+}    }
+
+
+document.getElementById("demo2").innerHTML = a;
+
+} 
+
+
+			
+</script>
+
+</html>

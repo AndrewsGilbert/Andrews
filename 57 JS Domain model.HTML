@@ -1,0 +1,83 @@
+<html>
+
+<title>Domain Model</title>
+
+<h2>Land Model</h2>
+
+
+<p><span id="demo1"></span></p>
+
+
+
+<script>
+
+class land { constructor(plot,user,soil) //to define the land detsils, This is the Model
+			{
+			
+			this.plot_details = plot;
+			this.user_details = user;
+			this.soil_details = soil;
+			
+			}};
+
+
+class soil { constructor(name,colour,type,waterholding,nutrients,ph) // to define the soil entity, which is part of Land
+			{
+			
+			this.name = name;
+			this.colour = colour;
+			this.type = type;
+			this.waterholding_capacity = waterholding;
+			this.nutrients = nutrients;
+			this.ph = ph;
+			
+			}};
+			
+class user { constructor(name,gender,dob,contact) // to define the user entity, which is part of Land
+			{
+			
+			this.name = name;
+			this.gender = gender;
+			this.dob = dob;
+			this.mobnum = contact;
+			
+			}};
+			
+class plot { constructor(name,length,width,location) // to define the plot entity, which is part of Land
+			{
+			
+			this.name = name;
+			this.length = length;
+			this.width = width;
+			this.location = location;
+			
+			}};			
+
+
+var Redsoil = new soil("Red Soil","Red","Silt","Low","Low",6);
+var Blacksoil = new soil("Black Soil","Black","Cley","High","High",7.5);
+var AlluvialSoil = new soil("Alluvial Soil","Grey","Silt","Medium","High",7); 
+
+var user1 = new user("Raja","Male","10.05.1985","222535");
+var user2 = new user("Ramu","Male","12.03.1987","229114");
+
+var plot1 = new plot("11a",1500,1200,"Tenkasi");
+var plot2 = new plot("55s",5000,2000,"Kadayam");
+var plot3 = new plot("72b",5500,2200,"Ambai");
+var plot4 = new plot("27r",3500,3200,"Courtrallam");
+
+
+
+var land1 = new land(plot4,user1,Blacksoil);
+var land2 = new land(plot3,user2,AlluvialSoil);
+var land3 = new land(plot2,user1,Redsoil);
+var land4 = new land(plot1,user1,Redsoil);
+
+console.log(land1);
+
+</script>
+
+</html>
+
+
+

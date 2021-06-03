@@ -1,0 +1,32 @@
+<html>
+<body>
+<title>Fibonacci number</title>
+
+<h3>Fibonacci Number</h3>
+
+<p>Fibonacci Number is  =  <span  id="demo"></span></p>
+
+<script>
+
+var n = 11;
+
+function fibnum(x) {
+
+var f = [0,1];
+
+if ( x <= 1 ) { return f[x];}
+
+else { if ( x > 1 ) { f[x] = fibnum(x-1)+fibnum(x-2); }  
+
+return f[x];} 
+
+}
+
+
+document.getElementById("demo").innerHTML = fibnum(n);
+
+</script>
+
+</body>
+
+</html>
